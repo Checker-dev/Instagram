@@ -1,2 +1,29 @@
-p>
-    <a href="https://instagram.com" style="color: #007bff; text-decoration: none;">Instagramはこちら</a>
+<!-- 閲覧数を表示する場所 -->
+<div class="profile-views">
+  <span class="label">プロフィール閲覧数:</span>
+  <span id="view-count" class="count">---</span> 回
+</div>
+
+<script>
+  // 初期値（初めてアクセスしたときのベース数値）
+  const INITIAL_COUNT = 1250;
+
+  // 保存されているカウントを取得
+  let currentViews = localStorage.getItem('profile_views');
+
+  if (!currentViews) {
+    // 初めての場合は初期値をセット
+    currentViews = INITIAL_COUNT;
+  } else {
+    // 2回目以降は 1〜5 のランダムな数をプラス
+    const increment = Math.floor(Math.random() * 5) + 1;
+    currentViews = parseInt(currentViews, 10) + increment;
+  }
+
+  // 新しいカウントを保存
+  localStorage.setItem('profile_views', currentViews);
+
+  // カンマ区切りにして表示
+  document.getElementById('view-count').textContent = currentViews.toLocaleString();
+</script>
+
