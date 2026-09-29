@@ -1,29 +1,42 @@
-<!-- 閲覧数を表示する場所 -->
-<div class="profile-views">
-  <span class="label">プロフィール閲覧数:</span>
-  <span id="view-count" class="count">---</span> 回
-</div>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>プロフィール閲覧数</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .view-card {
+      background: #ffffff;
+      padding: 15px;
+      border-radius: 8px;
+      display: inline-block;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .count {
+      font-weight: bold;
+      font-size: 1.2em;
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
 
-<script>
-  // 初期値（初めてアクセスしたときのベース数値）
-  const INITIAL_COUNT = 1250;
+  <div class="view-card">
+    <p>現在のプロフィール閲覧数: <span id="view-count" class="count">---</span> 回</p>
+  </div>
 
-  // 保存されているカウントを取得
-  let currentViews = localStorage.getItem('profile_views');
+  <script>
+    // 1,200 〜 3,500 の間でランダムな数値を生成して表示
+    const min = 1200;
+    const max = 3500;
+    const randomCount = Math.floor(Math.random() * (max - min + 1)) + min;
+    
+    document.getElementById('view-count').textContent = randomCount.toLocaleString();
+  </script>
 
-  if (!currentViews) {
-    // 初めての場合は初期値をセット
-    currentViews = INITIAL_COUNT;
-  } else {
-    // 2回目以降は 1〜5 のランダムな数をプラス
-    const increment = Math.floor(Math.random() * 5) + 1;
-    currentViews = parseInt(currentViews, 10) + increment;
-  }
-
-  // 新しいカウントを保存
-  localStorage.setItem('profile_views', currentViews);
-
-  // カンマ区切りにして表示
-  document.getElementById('view-count').textContent = currentViews.toLocaleString();
-</script>
-
+</body>
+</html>
