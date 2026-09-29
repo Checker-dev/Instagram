@@ -40,3 +40,75 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プロフィール閲覧数</title>
+  <style>
+    /* 画面全体を中央寄せにする設定 */
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center; /* 左右の中央寄せ */
+      align-items: center;     /* 上下の中央寄せ */
+      background-color: #f5f5f5;
+    }
+
+    /* カード全体のスタイル */
+    .view-card {
+      background: #ffffff;
+      padding: 30px 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 80%;
+    }
+
+    /* テキスト部分 */
+    .label {
+      font-size: 1.2rem;
+      color: #333333;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    /* 数字部分を大きく表示 */
+    .count {
+      font-weight: bold;
+      font-size: 3.5rem; /* 数字の大きさ */
+      color: #007bff;
+      line-height: 1;
+    }
+
+    /* 「回」の文字 */
+    .unit {
+      font-size: 1.5rem;
+      color: #333333;
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="view-card">
+    <span class="label">現在のプロフィール閲覧数</span>
+    <span id="view-count" class="count">---</span><span class="unit">回</span>
+  </div>
+
+  <script>
+    // 数値の範囲（例: 5 〜 30）
+    const min = 5;
+    const max = 30;
+    const randomCount = Math.floor(Math.random() * (max - min + 1)) + min;
+    
+    document.getElementById('view-count').textContent = randomCount.toLocaleString();
+  </script>
+
+</body>
+</html>
+
